@@ -4,7 +4,7 @@ import TableBody from "./TableBody";
 //this is a functional component that will recieve the user as props
 function Table(props) {
     return (
-        <div className="table m-3">
+        <div className="table m-5">
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -35,14 +35,14 @@ function Table(props) {
                                 Email
                   </span>
                         </th>
-                        <th scope="col">
+                        {/* <th scope="col">
                             <span
                                 className={props.getHeaderClassName("dob")}
                                 onClick={() => this.handleSortDirectionChange("dob")}
                             >
                                 DOB
                   </span>
-                        </th>
+                        </th> */}
                     </tr>
                 </thead>
                   <TableBody users={ props.users }/>              

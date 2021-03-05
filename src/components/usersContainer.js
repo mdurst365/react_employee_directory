@@ -19,7 +19,6 @@ class UserContainer extends React.Component {
             first: user.name.first,
             last: user.name.last,
             email: user.email,
-            dob: user.dob.date,
             image: user.picture.medium
           };
         });*/
@@ -56,7 +55,6 @@ class UserContainer extends React.Component {
             <td>{user.first}</td>
             <td>{user.last}</td>
             <td>{user.email}</td>
-            <td>{new Date(user.dob).toDateString()}</td>
           </tr>
         );
       });
