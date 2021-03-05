@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import API from "../utils/API";
+import Table from "./Table.js";
 
 class UserContainer extends React.Component {
   state = {
@@ -10,10 +11,10 @@ class UserContainer extends React.Component {
     col: ""
   };
 
-  retrieveUsers() {
+  componentDidMount() {
     API.usersList()
       .then(res => {
-        const userArray = res.data.results.map(user => {
+       /* const userArray = res.data.results.map(user => {
           return {
             first: user.name.first,
             last: user.name.last,
@@ -21,11 +22,13 @@ class UserContainer extends React.Component {
             dob: user.dob.date,
             image: user.picture.medium
           };
-        });
-        this.setState({ users: userArray });
+        });*/
+        console.log(res)
+        this.setState({ users: res.data.results });
       })
       .catch(err => console.log(err));
   }
+  
 
   handleSearchChange = e => {
     this.setState({ search: e.target.value });
@@ -96,50 +99,11 @@ class UserContainer extends React.Component {
             aria-describedby="basic-addon1"
           />
         </div>
-        <div className="table m-3">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Image</th>
-                <th scope="col">
-                  <span
-                    className={this.getHeaderClassName("first")}
-                    onClick={() => {
-                      this.handleSortDirectionChange("first");
-                    }}
-                  >
-                    First
-                  </span>
-                </th>
-                <th scope="col">
-                  <span
-                    className={this.getHeaderClassName("last")}
-                    onClick={() => this.handleSortDirectionChange("last")}
-                  >
-                    Last
-                  </span>
-                </th>
-                <th scope="col">
-                  <span
-                    className={this.getHeaderClassName("email")}
-                    onClick={() => this.handleSortDirectionChange("email")}
-                  >
-                    Email
-                  </span>
-                </th>
-                <th scope="col">
-                  <span
-                    className={this.getHeaderClassName("dob")}
-                    onClick={() => this.handleSortDirectionChange("dob")}
-                  >
-                    DOB
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>{this.renderUsers()}</tbody>
-          </table>
-        </div>
+        <Table
+        users={this.state.users} 
+        getHeaderClassName={this.getHeaderClassName}
+  
+        />
       </>
     );
   }
