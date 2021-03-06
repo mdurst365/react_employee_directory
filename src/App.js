@@ -4,14 +4,14 @@ import React from "react";
 import HeaderInfo from "./components/HeaderInfo";
 import UsersContainer from "./components/UsersContainer";
 import FooterInfo from "./components/FooterInfo"
-import SearchForm from "./components/SearchForm"
+// import SearchForm from "./components/SearchForm"
 
 
 function App() {
     //this will return the containers
     return<>
     <HeaderInfo/>
-    <SearchForm />
+    {/* <SearchForm /> */}
     <UsersContainer/>
     <FooterInfo/>
     </>

@@ -15,9 +15,22 @@
 
   .table {
     margin: auto;
-    max-width: 80%;
   }
 
   .btn-primary {
     margin:auto;
   }
+
+  h5 {
+    background-color: navy;
+    color: white;
+    padding:1%;
+  }
+
+  .bright:hover {
+    background-color: yellowgreen;
+  }
+  
+ .input-group {
+   max-width: 40%;
+ }

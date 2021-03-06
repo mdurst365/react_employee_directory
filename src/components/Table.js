@@ -35,14 +35,13 @@ function Table(props) {
                                 Email
                   </span>
                         </th>
-                        {/* <th scope="col">
+                        <th scope="col">
                             <span
-                                className={props.getHeaderClassName("dob")}
-                                onClick={() => this.handleSortDirectionChange("dob")}
+                                className={props.getHeaderClassName("Phone")}
                             >
-                                DOB
+                                Phone
                   </span>
-                        </th> */}
+                        </th>
                     </tr>
                 </thead>
                   <TableBody users={ props.users }/>              

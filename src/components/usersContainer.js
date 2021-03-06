@@ -1,57 +1,66 @@
 import React from "react";
 import "./styles.css";
 import API from "../utils/API";
-import Table from "./Table.js";
+// import Table from "./Table.js";
 
 class UserContainer extends React.Component {
+  //set initial state
   state = {
     users: [],
-    // search: "",
-    // sortDirection: "",
+    search: "",
+    sortDirection: "",
     col: ""
   };
 
   componentDidMount() {
     API.usersList()
       .then(res => {
-        console.log(res)
-        this.setState({ users: res.data.results });
+        const userArray = res.data.results.map(user => {
+          return {
+            first: user.name.first,
+            last: user.name.last,
+            email: user.email,
+            phone: user.phone,
+            image: user.picture.medium
+          };
+        });
+        this.setState({ users: userArray });
       })
       .catch(err => console.log(err));
   }
-  
-  
 
-  // handleSearchChange = e => {
-  //   this.setState({ search: e.target.value });
-  // };
+  handleSearchChange = e => {
+    this.setState({ search: e.target.value });
+  };
 
-  // filteredUsers() {
-  //   const search = this.state.search.toLowerCase();
-  //   return this.state.users.filter(user => {
-  //     return (
-  //       user.first.toLowerCase().includes(search) ||
-  //       user.last.toLowerCase().includes(search)
-  //     );
-  //   });
-  // }
+  filteredUsers() {
+    const search = this.state.search.toLowerCase();
+    return this.state.users.filter(user => {
+      return (
+        user.first.toLowerCase().includes(search) ||
+        user.last.toLowerCase().includes(search)
+      );
+    });
+  }
 
-  // renderUsers = () => {
-  //   return this.filteredUsers()
-  //     .sort(this.sortUsers)
-  //     .map((user, index) => {
-  //       return (
-  //         <tr key={index}>
-  //           <td>
-  //             <img src={user.image} alt="user"></img>
-  //           </td>
-  //           <td>{user.first}</td>
-  //           <td>{user.last}</td>
-  //           <td>{user.email}</td>
-  //         </tr>
-  //       );
-  //     });
-  // };
+  renderUsers = () => {
+    return this.filteredUsers()
+      .sort(this.sortUsers)
+      .map((user, index) => {
+        return (
+          <tr key={index}>
+            <td>
+              <img src={user.image} alt="user"></img>
+            </td>
+            <td>{user.first}</td>
+            <td>{user.last}</td>
+            <td>{user.email}</td>
+            <td>{user.phone}</td>
+          </tr>
+        );
+      });
+  };
+
 
   getHeaderClassName = col => {
     return this.state.col === col
@@ -66,6 +75,7 @@ class UserContainer extends React.Component {
       : this.setState({ sortDirection: "ascending", col: col });
   };
 
+
   sortUsers = (a, b) => {
     if (a[this.state.col] < b[this.state.col]) {
       return this.state.sortDirection === "ascending" ? -1 : 1;
@@ -75,31 +85,75 @@ class UserContainer extends React.Component {
     return 0;
   };
 
-  //render the user container including search field
+
   render() {
     return (
       <>
-
-  {/* search isn't working so I commented the box out for now     */}
-        {/* <div className="input-group justify-content-center">
+        <h4>&nbsp; &nbsp;Filter results by typing into the box below:</h4>
+        <div className="input-group justify-content-center">
           <div className="input-group-prepend"></div>
           <input
             onChange={this.handleSearchChange}
             type="search"
             className="form-control m-3"
-            placeholder="Search"
+            placeholder="Type a name to begin search"
             aria-label="SearchBox"
             aria-describedby="basic-addon1"
           />
-        </div> */}
-        <Table
-        users={this.state.users} 
-        getHeaderClassName={this.getHeaderClassName}
-  
-        />
+        </div>
+        <h5>Click on the column title to sort by First or Last Name</h5>
+        <div className="table m-3">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Image</th>
+                <th className="bright" scope="col">
+                  <span
+                    className={this.getHeaderClassName("first")}
+                    onClick={() => {
+                      this.handleSortDirectionChange("first");
+                    }}
+                  >
+                    First
+                  </span>
+                </th>
+                <th className="bright" scope="col">
+                  <span
+                    className={this.getHeaderClassName("last")}
+                    onClick={() => this.handleSortDirectionChange("last")}
+                  >
+                    Last
+                  </span>
+                </th>
+                <th scope="col">
+                  <span
+                    className={this.getHeaderClassName("email")}
+                  >
+                    Email
+                  </span>
+                </th>
+                <th scope="col">
+                  <span
+                    className={this.getHeaderClassName("{Phone}")}
+                  >
+                    Phone
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>{this.renderUsers()}</tbody>
+          </table>
+        </div>
       </>
     );
   }
 }
+
+{/* <Table
+users={this.state.users} 
+getHeaderClassName={this.getHeaderClassName}
+
+/>
+</> */}
 
 export default UserContainer;

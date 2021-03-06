@@ -10,6 +10,7 @@ function TableBody (props) {
                     <td>{user.name.first}</td>
                     <td>{user.name.last}</td>
                     <td>{user.email}</td>
+                    <td>{user.phone}</td>
                 </tr>
             )
         })}
