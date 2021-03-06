@@ -6,7 +6,7 @@ function HeaderInfo() {
         <div className="jumbotron jumbotron-fluid">
             <div className="container">
                 <h1 className="display-4">Employee Directory</h1>
-                <p className="lead">Not sure what to say here yet.</p>
+                <p className="lead">List of Company Employees</p>
             </div>
         </div>
     );
