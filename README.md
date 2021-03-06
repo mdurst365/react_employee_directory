@@ -8,4 +8,6 @@ The user should be able to:
 - [X] Sort the table by at least one category
 - [X] Filter the users by at least one property
  
-## Screencap/Walkthrough will go here
+## Demo GIF
+
+![Demo](https://raw.githubusercontent.com/mdurst365/react_employee_directory/blob/main/public/React%20App.gif?raw=true)
