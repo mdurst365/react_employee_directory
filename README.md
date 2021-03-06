@@ -11,3 +11,7 @@ The user should be able to:
 ## Demo GIF
 
 ![Demo](https://github.com/mdurst365/react_employee_directory/blob/main/public/ReactApp.gif?raw=true)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
