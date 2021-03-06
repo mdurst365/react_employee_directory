@@ -1,17 +1,17 @@
 //imports
 import React from "react";
 //import container component and any other needed components here
-import headerInfo from "./components/headerInfo";
-import usersContainer from "./components/usersContainer";
-import footerInfo from "./components/footerInfo"
+import HeaderInfo from "./components/HeaderInfo";
+import UsersContainer from "./components/UsersContainer";
+import FooterInfo from "./components/FooterInfo"
 
 
 function App() {
     //this will return the containers
     return<>
-    <headerInfo/>
-    <usersContainer/>
-    <footerInfo/>
+    <HeaderInfo/>
+    <UsersContainer/>
+    <FooterInfo/>
     </>
   }
 
