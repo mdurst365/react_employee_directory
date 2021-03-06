@@ -6,59 +6,52 @@ import Table from "./Table.js";
 class UserContainer extends React.Component {
   state = {
     users: [],
-    search: "",
-    sortDirection: "",
+    // search: "",
+    // sortDirection: "",
     col: ""
   };
 
   componentDidMount() {
     API.usersList()
       .then(res => {
-       /* const userArray = res.data.results.map(user => {
-          return {
-            first: user.name.first,
-            last: user.name.last,
-            email: user.email,
-            image: user.picture.medium
-          };
-        });*/
         console.log(res)
         this.setState({ users: res.data.results });
       })
       .catch(err => console.log(err));
   }
   
+  
 
-  handleSearchChange = e => {
-    this.setState({ search: e.target.value });
-  };
+  // handleSearchChange = e => {
+  //   this.setState({ search: e.target.value });
+  // };
 
-  filteredUsers() {
-    const search = this.state.search.toLowerCase();
-    return this.state.users.filter(user => {
-      return (
-        user.first.toLowerCase().includes(search) ||
-        user.last.toLowerCase().includes(search)
-      );
-    });
-  }
+  // filteredUsers() {
+  //   const search = this.state.search.toLowerCase();
+  //   return this.state.users.filter(user => {
+  //     return (
+  //       user.first.toLowerCase().includes(search) ||
+  //       user.last.toLowerCase().includes(search)
+  //     );
+  //   });
+  // }
 
-  renderUsers = () => {
-    return this.filteredUsers()
-      .sort(this.sortUsers)
-      .map((user, index) => {
-        return (
-          <tr key={index}>
-            <td>
-              <img src={user.image} alt="user"></img>
-            </td>
-            <td>{user.first}</td>
-            <td>{user.last}</td>
-            <td>{user.email}</td>
-          </tr>
-        );
-      });
-  };
+  // renderUsers = () => {
+  //   return this.filteredUsers()
+  //     .sort(this.sortUsers)
+  //     .map((user, index) => {
+  //       return (
+  //         <tr key={index}>
+  //           <td>
+  //             <img src={user.image} alt="user"></img>
+  //           </td>
+  //           <td>{user.first}</td>
+  //           <td>{user.last}</td>
+  //           <td>{user.email}</td>
+  //         </tr>
+  //       );
+  //     });
+  // };
 
   getHeaderClassName = col => {
     return this.state.col === col
