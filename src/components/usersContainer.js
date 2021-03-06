@@ -86,7 +86,9 @@ class UserContainer extends React.Component {
   render() {
     return (
       <>
-        <div className="input-group justify-content-center">
+
+  {/* search isn't working so I commented the box out for now     */}
+        {/* <div className="input-group justify-content-center">
           <div className="input-group-prepend"></div>
           <input
             onChange={this.handleSearchChange}
@@ -96,7 +98,7 @@ class UserContainer extends React.Component {
             aria-label="SearchBox"
             aria-describedby="basic-addon1"
           />
-        </div>
+        </div> */}
         <Table
         users={this.state.users} 
         getHeaderClassName={this.getHeaderClassName}

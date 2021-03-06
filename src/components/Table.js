@@ -5,7 +5,7 @@ import TableBody from "./TableBody";
 function Table(props) {
     return (
         <div className="table m-5">
-            <table className="table table-striped">
+            <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Image</th>
