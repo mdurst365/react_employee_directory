@@ -10,4 +10,4 @@ The user should be able to:
  
 ## Demo GIF
 
-![Demo](https://raw.githubusercontent.com/mdurst365/react_employee_directory/blob/main/public/React%20App.gif?raw=true)
+![Demo](https://raw.githubusercontent.com/mdurst365/react_employee_directory/blob/main/public/ReactApp.gif)
