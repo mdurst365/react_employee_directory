@@ -5,7 +5,7 @@ This is a homework assignment created for the OSU Coding Bootcamp. In this assig
 
 ## Requirements
 The user should be able to:
-- [ ] Sort the table by at least one category
-- [ ] Filter the users by at least one property
+- [X] Sort the table by at least one category
+- [X] Filter the users by at least one property
  
 ## Screencap/Walkthrough will go here
